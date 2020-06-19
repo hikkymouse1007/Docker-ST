@@ -16,6 +16,10 @@ services:
     privileged: true
     volumes:
       - ./app:/var/www/html
+    links:
+      - db
+    depends_on:
+      - db
     environment:
       - VIRTUAL_HOST=web.localhost.com,web2.localhost.com
 
@@ -35,6 +39,7 @@ services:
       - ./docker/db/sql:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
+    restart: always
 
   phpmyadmin:
     container_name: phpmyadmin
