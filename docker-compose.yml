@@ -1,23 +1,32 @@
 version: '3'
 
 services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
   web:
     container_name: web
     build: ./docker
     ports:
-      - 80:80
+      - 8000:80
     privileged: true
     volumes:
       - ./streamticket:/var/www/html
+    environment:
+      - VIRTUAL_HOST=web.localhost.com,web2.localhost.com
 
   db:
     image: mysql:5.7
     container_name: db-host
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: test
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
       TZ: 'Asia/Tokyo'
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
