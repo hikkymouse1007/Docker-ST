@@ -33,7 +33,8 @@ docker-compose down
 ```
 
 ## 参考記事
-jungissei/nginx-reverse-proxy
-https://github.com/jungissei/nginx-reverse-proxy
+nginx-proxy/nginx-proxy
+https://github.com/nginx-proxy/nginx-proxy
+
 Dockerサービスの簡単リバースプロキシ
 https://qiita.com/South_/items/7bdb1f373410cb1c907b
