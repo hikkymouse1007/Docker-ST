@@ -15,7 +15,7 @@ services:
       - 8000:80
     privileged: true
     volumes:
-      - ./streamticket:/var/www/html
+      - ./app:/var/www/html
     environment:
       - VIRTUAL_HOST=web.localhost.com,web2.localhost.com
 
